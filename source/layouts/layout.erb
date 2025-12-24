@@ -1,16 +1,29 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
-    <title><%= current_page.data.title || "Middleman" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lorenzo - Software Developer Portfolio">
+    <title><%= current_page.data.title || "Lorenzo | Software Developer" %></title>
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site" %>
   </head>
   <body>
+    <nav>
+      <div class="nav-content">
+        <a href="#" class="logo">Lorenzo</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <%= yield %>
+
+    <footer>
+      <p>Built with Middleman. Hosted on Netlify.</p>
+    </footer>
   </body>
 </html>

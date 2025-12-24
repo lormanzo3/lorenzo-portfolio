@@ -1,0 +1,11 @@
+[build]
+  command = "bundle exec middleman build"
+  publish = "build"
+
+[build.environment]
+  RUBY_VERSION = "3.3.5"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

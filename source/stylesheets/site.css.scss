@@ -1,24 +1,350 @@
+// ===========================================
+// COLOR VARIABLES
+// ===========================================
+$bg-dark: #0d1117;
+$bg-card: #161b22;
+$text-primary: #e6edf3;
+$text-secondary: #8b949e;
+$accent: #58a6ff;
+$accent-secondary: #f778ba;
+$accent-tertiary: #7ee787;
+
+// ===========================================
+// RESET & BASE
+// ===========================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; // Smooth scrolling for anchor links
+}
+
 body {
-  background-color: #fbc547;
-  color: #333;
-  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
-    "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
-    "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
-    "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
-  padding: 18vh 1rem;
-  text-align: center;
+  background-color: $bg-dark;
+  color: $text-primary;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", sans-serif;
+  line-height: 1.6;
 }
 
 a {
-  color: rgba(#000, 0.7);
+  color: $accent;
+  text-decoration: none;
 
-  &:focus,
   &:hover {
-    color: rgba(#000, 0.6);
+    text-decoration: underline;
   }
 }
 
-.middleman-logo {
-  margin-bottom: 1rem;
-  width: 10rem;
+// ===========================================
+// LAYOUT
+// ===========================================
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// ===========================================
+// NAVIGATION
+// ===========================================
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba($bg-dark, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba($text-secondary, 0.2);
+
+  .nav-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: $text-primary;
+
+    &:hover {
+      text-decoration: none;
+      color: $accent;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+
+    a {
+      color: $text-secondary;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $accent;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// ===========================================
+// HERO / ABOUT SECTION
+// ===========================================
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 60px; // Account for fixed nav
+
+  .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .greeting {
+    color: $accent;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    .highlight {
+      color: $accent-secondary;
+    }
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+  }
+
+  .bio {
+    font-size: 1.1rem;
+    color: $text-secondary;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+// ===========================================
+// BUTTONS
+// ===========================================
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn-primary {
+  background-color: $accent;
+  color: $bg-dark;
+
+  &:hover {
+    background-color: lighten($accent, 10%);
+  }
+}
+
+.btn-secondary {
+  border: 1px solid $text-secondary;
+  color: $text-primary;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+// ===========================================
+// SECTIONS
+// ===========================================
+section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: linear-gradient(90deg, $accent, $accent-secondary);
+    border-radius: 2px;
+  }
+}
+
+// ===========================================
+// PROJECTS
+// ===========================================
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: $bg-card;
+  border: 1px solid rgba($text-secondary, 0.2);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: $accent;
+    transform: translateY(-4px);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $text-secondary;
+      font-size: 1.2rem;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
+
+  .project-description {
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    background-color: rgba($accent, 0.1);
+    color: $accent;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+  }
+}
+
+// Color variations for project cards
+.project-card:nth-child(1) {
+  border-top: 3px solid $accent-secondary;
+}
+
+.project-card:nth-child(2) {
+  border-top: 3px solid $accent-tertiary;
+}
+
+// ===========================================
+// CONTACT
+// ===========================================
+.contact {
+  text-align: center;
+  padding-bottom: 8rem;
+
+  .section-title {
+    justify-content: center;
+  }
+
+  .contact-text {
+    color: $text-secondary;
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    a {
+      color: $text-secondary;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $accent;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// ===========================================
+// FOOTER
+// ===========================================
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: $text-secondary;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba($text-secondary, 0.2);
+}
+
+// ===========================================
+// RESPONSIVE
+// ===========================================
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero .tagline {
+    font-size: 1.2rem;
+  }
+
+  nav .nav-links {
+    gap: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
 }
